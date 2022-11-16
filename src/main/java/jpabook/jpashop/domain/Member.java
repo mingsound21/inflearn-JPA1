@@ -22,6 +22,7 @@ public class Member {
     private Address address;
 
     @OneToMany(mappedBy = "member") // 연관관계의 주인 X
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>(); // 컬렉션은 필드에서 바로 초기화하는 것이 null 문제에서 안전
+
 
 }

@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Getter @Setter
 public class Delivery {
@@ -13,7 +15,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery") // 연관관계의 주인 X
+    @OneToOne(mappedBy = "delivery", fetch = LAZY) // 연관관계의 주인 X
     private Order order;
 
     @Embedded
@@ -21,4 +23,7 @@ public class Delivery {
 
     @Enumerated(EnumType.STRING) // enum type 무조건 STRING으로
     private DeliveryStatus status; // READY, COMP
+
+
+
 }
