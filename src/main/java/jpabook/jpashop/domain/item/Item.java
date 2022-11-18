@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@Getter @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 상속관계 매핑
 @DiscriminatorColumn(name = "dtype")
 public abstract class Item {
