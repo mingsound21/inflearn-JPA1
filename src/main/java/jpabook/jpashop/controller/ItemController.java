@@ -1,18 +1,20 @@
 package jpabook.jpashop.controller;
 
 import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.service.ItemService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
-    private ItemService itemService;
+    private final ItemService itemService; // final 작성 안했더니 주입 못받아서 계속 오류 났음!!
 
     @GetMapping("/items/new")
     public String createForm(Model model){
@@ -34,4 +36,12 @@ public class ItemController {
         return "redirect:/items";
     }
 
+    @GetMapping("/items")
+    public String list(Model model){
+        System.out.println("im controller");
+        List<Item> items = itemService.findItems();
+
+        model.addAttribute("items", items);
+        return "items/itemList";
+    }
 }
