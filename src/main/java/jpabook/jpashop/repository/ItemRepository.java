@@ -17,7 +17,7 @@ public class ItemRepository {
         if(item.getId() == null){ // 신규 등록
             em.persist(item);
         }else{ // 이미 DB에 등록된 것을 가져온 뒤 update 하는,,
-            em.merge(item); // merge 자세한 것은 웹 어플리케이션 개발 때 설명..!
+            Item merge = em.merge(item);// 파라미터로 넘어가는 item은 영속상태 되지 X, merge의 반환값인 merge는 영속상태
         }
     }
 
