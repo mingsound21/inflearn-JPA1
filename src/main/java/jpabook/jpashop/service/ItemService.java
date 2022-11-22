@@ -21,7 +21,7 @@ public class ItemService {
     }
 
 
-    // em.merget(준영속 엔티티)가 아래와 똑같은 코드를 실행해줌
+    // em.merge(준영속 엔티티)가 아래와 똑같은 코드를 실행해줌
     @Transactional
     public void updateItem(Long itemId, UpdateItemDto itemDto){
         Item findItem = itemRepository.findOne(itemId); // 영속상태가 됨
